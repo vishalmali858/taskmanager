@@ -19,7 +19,7 @@ const upload = multer({
 });
 
 router.post('/users', async (req, res)=> {
-	const user = new Users(req.body);
+	const user = await new Users(req.body);
 	try {
 		await user.save();
 		sendWelcomeEmail(user.email, user.name);
